@@ -1,0 +1,70 @@
+.loginBox {
+	/*border: 2px solid red;*/
+	background-color: white;
+	border-radius: 6px;
+	height: 105px;
+	width: 400px;
+	margin: auto;
+	padding: 20px;
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0;
+	overflow: auto;
+	text-align: center;
+
+	opacity: 0.9;
+	transition: all 0.5s ease-out;
+}
+
+.loginBox:hover {
+	opacity: 1;
+	transition: all 0.3s ease-in;
+}
+
+.loginGoogle {
+	color: #525f59;
+}
+
+.loginForms {
+/*	border: 2px red solid;
+*/	width: 280px;
+	margin: 0 auto;
+	text-align: right;
+}
+
+.loginForm {
+	margin-top: 10px;
+}
+
+button.login {
+	border-radius: 0px 4px 4px 0px;
+
+	cursor: normal;
+	opacity: 0.75;
+	transition: all 0.5s ease-out;
+}
+
+button.login:hover {
+	cursor: pointer;
+	opacity: 1;
+	transition: all 0.3s ease-in;
+}
+
+input.login {
+	background-color: #e5e5e5;
+	border: none;
+	border-radius: 4px 0px 0px 4px;
+	box-shadow: none;
+	color: #a2a2a2;
+	font-size: 13px;
+	outline: none;
+	padding: 4px 8px;
+}
+
+input.login.join {
+	width: 70px;
+}
+
+input.login:focus {
+	box-shadow: none;
+	outline: none;
+}

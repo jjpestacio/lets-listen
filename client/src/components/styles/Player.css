@@ -1,0 +1,17 @@
+.controller {
+	margin: 8px 0;
+}
+
+button.control {
+	font-size: 14px;
+	margin-right: 5px;
+	padding: 4px 8px;
+
+	opacity: 0.75;
+	transition: all 0.5s ease-out;
+}
+
+button.control:hover {
+	opacity: 1;
+	transition: all 0.3s ease-in;
+}

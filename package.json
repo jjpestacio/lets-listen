@@ -1,0 +1,40 @@
+{
+  "name": "lets-listen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nf start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.25.0",
+    "postcss-loader": "^0.11.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "axios": "^0.13.1",
+    "babel-register": "^6.11.6",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.1",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "socket.io": "^1.4.8",
+    "youtube-player": "^3.0.4"
+  }
+}
