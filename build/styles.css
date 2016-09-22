@@ -24,3 +24,15 @@ button {
 button:hover {
 	cursor: pointer;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	body {
+		font-size: 30px;
+	}
+
+	button {
+		border-radius: 6px;
+		font-size: 28px;
+		padding: 8px 12px;
+	}
+}

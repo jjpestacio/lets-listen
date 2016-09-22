@@ -80,6 +80,10 @@ io.on('connection', socket => {
 		roomId = data.roomId;
 		socket.join(roomId);
 		rooms[roomId].store.dispatch(addUser(data.user));
+
+		// Person joined an empty room, that he did not create
+		if (rooms[roomId].store.getState().users.length === 1)
+			rooms[roomId].store.dispatch(setDJ(data.user.userId));
 	});
 
 	socket.on('set DJ', userId => rooms[roomId].store.dispatch(setDJ(userId)) );
@@ -92,10 +96,15 @@ io.on('connection', socket => {
 
 			store.dispatch(removeUser(userId))
 
-			if (store.getState().DJ === userId && store.getState().users.length) {
-				console.log('here')
+			if (store.getState().DJ === userId && store.getState().users.length)
 				store.dispatch(setDJ(store.getState().users[0].userId));
-			}
+
+			// Last user, remove room after 5 minutes idle time
+			if (store.getState().users.length === 0)
+				setTimeout(() => {
+					if (store.getState().users.length === 0)
+						rooms[roomId] = null;
+				}, 30000);
 		}
 	});
 });

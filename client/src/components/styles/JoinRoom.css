@@ -25,8 +25,8 @@
 }
 
 .loginForms {
-/*	border: 2px red solid;
-*/	width: 280px;
+	/*border: 2px red solid;*/
+	width: 280px;
 	margin: 0 auto;
 	text-align: right;
 }
@@ -36,7 +36,7 @@
 }
 
 button.login {
-	border-radius: 0px 4px 4px 0px;
+	border-radius: 0 4px 4px 0;
 
 	cursor: normal;
 	opacity: 0.75;
@@ -52,12 +52,13 @@ button.login:hover {
 input.login {
 	background-color: #e5e5e5;
 	border: none;
-	border-radius: 4px 0px 0px 4px;
+	border-radius: 4px 0 0 4px;
 	box-shadow: none;
 	color: #a2a2a2;
 	font-size: 13px;
 	outline: none;
 	padding: 4px 8px;
+	vertical-align: top;
 }
 
 input.login.join {
@@ -67,4 +68,31 @@ input.login.join {
 input.login:focus {
 	box-shadow: none;
 	outline: none;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.loginBox {
+		border-radius: 10px;
+		height: 250px;
+		width: 600px;
+	}
+
+	.loginForms {
+		width: 550px;
+	}
+
+	.loginForm {
+		margin-top: 20px
+	}
+
+	button.login {
+		border-radius: 0 6px 6px 0;
+	}
+
+	input.login {
+		border-radius: 6px 0 0 6px;
+		font-size: 26px;
+		padding: 8px 16px;
+	}	
+
 }

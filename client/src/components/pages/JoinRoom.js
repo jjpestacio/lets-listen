@@ -47,36 +47,37 @@ export default class JoinRoom extends Component {
 
 		this.socket.emit('create room id', roomId);
 
-		this.socket.on('room id not available', () => {
+		this.socket.once('room id not available', () => {
 			this.createRoom(accessToken);
 		});
 
-		this.socket.on('room id available', roomId => {
+		this.socket.once('room id available', roomId => {
 			this.socket.emit('create room', { accessToken, roomId });
 			this.joinRoom(roomId);
 		});
 	}
 
 	joinRoom(roomId) {
+		console.log('here')
 		this.socket.emit('check room', roomId);
 
-		this.socket.on('room not authorized', roomId => {
+		this.socket.once('room not authorized', roomId => {
 			alert('Room does not exist.');
 			return;
 		});
 
-		this.socket.on('room authorized', roomId => {
+		this.socket.once('room authorized', roomId => {
 			this.socket.emit('check username', {
 				roomId,
 				username: this.state.username
 			});
 
-			this.socket.on('username not authorized', username => {
+			this.socket.once('username not authorized', username => {
 				alert('That username is already taken.');
 				return;
 			});
 
-			this.socket.on('username authorized', username => { 
+			this.socket.once('username authorized', username => { 
 				this.setState({ username });
 				this.setRoom(roomId);
 				this.signIn();

@@ -36830,11 +36830,11 @@
 	
 				this.socket.emit('create room id', roomId);
 	
-				this.socket.on('room id not available', function () {
+				this.socket.once('room id not available', function () {
 					_this3.createRoom(accessToken);
 				});
 	
-				this.socket.on('room id available', function (roomId) {
+				this.socket.once('room id available', function (roomId) {
 					_this3.socket.emit('create room', { accessToken: accessToken, roomId: roomId });
 					_this3.joinRoom(roomId);
 				});
@@ -36844,25 +36844,26 @@
 			value: function joinRoom(roomId) {
 				var _this4 = this;
 	
+				console.log('here');
 				this.socket.emit('check room', roomId);
 	
-				this.socket.on('room not authorized', function (roomId) {
+				this.socket.once('room not authorized', function (roomId) {
 					alert('Room does not exist.');
 					return;
 				});
 	
-				this.socket.on('room authorized', function (roomId) {
+				this.socket.once('room authorized', function (roomId) {
 					_this4.socket.emit('check username', {
 						roomId: roomId,
 						username: _this4.state.username
 					});
 	
-					_this4.socket.on('username not authorized', function (username) {
+					_this4.socket.once('username not authorized', function (username) {
 						alert('That username is already taken.');
 						return;
 					});
 	
-					_this4.socket.on('username authorized', function (username) {
+					_this4.socket.once('username authorized', function (username) {
 						_this4.setState({ username: username });
 						_this4.setRoom(roomId);
 						_this4.signIn();
@@ -37000,7 +37001,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n/*\tborder: 2px red solid;\n*/\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0px 4px 4px 0px;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0px 0px 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}", ""]);
+	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 250px;\n\t\twidth: 600px;\n\t}\n\n\t.loginForms {\n\t\twidth: 550px;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 26px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n}", ""]);
 	
 	// exports
 
@@ -37204,6 +37205,16 @@
 				var currentSong = _props.currentSong;
 				var DJ = _props.DJ;
 	
+				// Mobile version
+	
+				if (window.matchMedia('screen and (min-width: 320px) and (max-width: 480px)').matches) {
+					console.log('here');
+					return _react2.default.createElement(
+						'div',
+						{ className: 'page' },
+						'hi'
+					);
+				}
 	
 				return _react2.default.createElement(
 					'div',
@@ -37298,7 +37309,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".page {\n\t/*border: 4px solid blue;*/\n\theight: auto;\n\twidth: 1200px;\n\tmargin: 10px auto;\n}\n\n.col {\n\t/*border: 2px solid red;*/\n\tdisplay: inline-block;\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 800px;\n\twidth: 300px;\n\tmargin: 10px;\n\tpadding: 20px;\n\tposition: relative;\n\toverflow: auto;\n\tvertical-align: top;\n\n\topacity: 0.95;\n\ttransition: all 0.5s ease-in;\n}\n\n.col:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.row {\n\twidth: 100%;\n\tposition: relative;\n}\n\n.titleBar {\n\t/*border: 2px solid green;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\twidth: 1020px;\n\tmargin-left: 10px;\n\tpadding: 10px 20px;\n}\n\n.roomNumber, .appName {\n\tcolor: #cd201f;\n\tfont-size: 40px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.roomNumber:hover, .appName:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.appName {\n\tfloat: right;\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}", ""]);
+	exports.push([module.id, ".page {\n\t/*border: 4px solid blue;*/\n\theight: auto;\n\twidth: 1200px;\n\tmargin: 10px auto;\n}\n\n.col {\n\t/*border: 2px solid red;*/\n\tdisplay: inline-block;\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 800px;\n\twidth: 300px;\n\tmargin: 10px;\n\tpadding: 20px;\n\tposition: relative;\n\toverflow: auto;\n\tvertical-align: top;\n\n\topacity: 0.95;\n\ttransition: all 0.5s ease-in;\n}\n\n.col:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.row {\n\twidth: 100%;\n\tposition: relative;\n}\n\n.titleBar {\n\t/*border: 2px solid green;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\twidth: 1020px;\n\tmargin-left: 10px;\n\tpadding: 10px 20px;\n}\n\n.roomNumber, .appName {\n\tcolor: #cd201f;\n\tfont-size: 40px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.roomNumber:hover, .appName:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.appName {\n\tfloat: right;\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.page {\n\t\twidth: 100vw;\n\t}\n\n\t.col {\n\t\theight: auto;\n\t}\n}", ""]);
 	
 	// exports
 

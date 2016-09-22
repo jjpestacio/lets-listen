@@ -60,3 +60,13 @@
 	font-family: 'Lobster', cursive;
 	font-weight: normal;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.page {
+		width: 100vw;
+	}
+
+	.col {
+		height: auto;
+	}
+}

@@ -28,6 +28,16 @@ export default class Room extends Component {
 	render() {
 		const { roomId } = this.props.params;
 		const { client, currentSong, DJ } = this.props;
+
+		// Mobile version
+		if (window.matchMedia('screen and (min-width: 320px) and (max-width: 480px)').matches) {
+			console.log('here')
+			return (
+				<div className="page">
+					hi
+				</div>
+			);	
+		}
 		
 		return (
 			<div className='page'>
