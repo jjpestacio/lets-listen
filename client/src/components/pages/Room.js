@@ -46,7 +46,7 @@ export default class Room extends Component {
 	}
 
 	view(e) {
-		this.setState({ view: e.target.value });
+		this.setState({ currentView: e.target.value });
 	}
 
 	render() {
