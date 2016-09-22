@@ -74,11 +74,12 @@ input.login:focus {
 	.loginBox {
 		border-radius: 10px;
 		height: 250px;
-		width: 600px;
+		width: 620px;
+		padding: 30px;
 	}
 
 	.loginForms {
-		width: 550px;
+		width: 600px;
 	}
 
 	.loginForm {

@@ -28,12 +28,13 @@
 }
 
 .row {
+	/*border: 2px solid green;*/
 	width: 100%;
 	position: relative;
 }
 
 .titleBar {
-	/*border: 2px solid green;*/
+	/*border: 2px solid red;*/
 	background-color: white;
 	border-radius: 6px;
 	width: 1020px;
@@ -41,7 +42,7 @@
 	padding: 10px 20px;
 }
 
-.roomNumber, .appName {
+.title {
 	color: #cd201f;
 	font-size: 40px;
 	font-weight: bold;
@@ -63,10 +64,35 @@
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	.page {
+		margin: 20px auto;
 		width: 100vw;
+	}
+
+	.row {
+		margin: 0 auto;
+		width: 95vw;
 	}
 
 	.col {
 		height: auto;
+	}
+
+	.titleBar {
+		width: 90vw;
+		margin: 0;
+		padding: 10px 20px;
+	}
+
+	.roomNumber {
+		float: right;
+		margin-left: 20px;
+	}
+
+	.menu {
+		background-color: white;
+		border: none;
+		border-radius: 6px;
+		width: 200px;
+		margin-right: 10px;
 	}
 }

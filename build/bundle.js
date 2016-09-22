@@ -37001,7 +37001,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 250px;\n\t\twidth: 600px;\n\t}\n\n\t.loginForms {\n\t\twidth: 550px;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 26px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n}", ""]);
+	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 250px;\n\t\twidth: 620px;\n\t\tpadding: 30px;\n\t}\n\n\t.loginForms {\n\t\twidth: 600px;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 26px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n}", ""]);
 	
 	// exports
 
@@ -37192,30 +37192,100 @@
 	
 			var _this = _possibleConstructorReturn(this, (Room.__proto__ || Object.getPrototypeOf(Room)).call(this, props));
 	
+			_this.state = {
+				currentView: 'Playing'
+			};
+	
 			_this.socket = _this.props.socket;
+	
+			_this.getView = _this.getView.bind(_this);
+			_this.view = _this.view.bind(_this);
 			return _this;
 		}
 	
 		_createClass(Room, [{
-			key: 'render',
-			value: function render() {
-				var roomId = this.props.params.roomId;
+			key: 'getView',
+			value: function getView() {
 				var _props = this.props;
 				var client = _props.client;
 				var currentSong = _props.currentSong;
 				var DJ = _props.DJ;
+				var currentView = this.state.currentView;
+	
+	
+				if (currentView === 'Playing') return client.userId === DJ ? _react2.default.createElement(_Player2.default, { socket: this.socket, song: currentSong }) : _react2.default.createElement(_CurrentSong2.default, { song: currentSong });else if (currentView === 'Queue') return _react2.default.createElement(_Queue2.default, null);else if (currentView === 'Users') return _react2.default.createElement(_UserList2.default, { socket: this.socket });
+			}
+		}, {
+			key: 'view',
+			value: function view(e) {
+				this.setState({ view: e.target.value });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var roomId = this.props.params.roomId;
+				var _props2 = this.props;
+				var client = _props2.client;
+				var currentSong = _props2.currentSong;
+				var DJ = _props2.DJ;
+				var currentView = this.state.currentView;
 	
 				// Mobile version
 	
-				if (window.matchMedia('screen and (min-width: 320px) and (max-width: 480px)').matches) {
-					console.log('here');
+				if (320 < screen.width && screen.width < 480) {
 					return _react2.default.createElement(
 						'div',
 						{ className: 'page' },
-						'hi'
+						_react2.default.createElement(
+							'div',
+							{ className: 'row' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'titleBar' },
+								_react2.default.createElement(
+									'select',
+									{ className: 'title menu', onChange: this.view },
+									_react2.default.createElement(
+										'option',
+										{ key: currentView, value: currentView },
+										currentView
+									),
+									['Playing', 'Queue', 'Users'].filter(function (view) {
+										return view !== currentView;
+									}).map(function (view) {
+										return _react2.default.createElement(
+											'option',
+											{ key: view, value: view },
+											view
+										);
+									})
+								),
+								_react2.default.createElement(
+									'span',
+									{ className: 'title roomNumber' },
+									'Room: ',
+									roomId
+								),
+								_react2.default.createElement(
+									'span',
+									{ className: 'title appName' },
+									'Let\'s Listen'
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'row' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'view' },
+								this.getView()
+							)
+						)
 					);
 				}
 	
+				// Desktop / Laptop version
 				return _react2.default.createElement(
 					'div',
 					{ className: 'page' },
@@ -37227,13 +37297,13 @@
 							{ className: 'titleBar' },
 							_react2.default.createElement(
 								'span',
-								{ className: 'roomNumber' },
+								{ className: 'title roomNumber' },
 								'Room: ',
 								roomId
 							),
 							_react2.default.createElement(
 								'span',
-								{ className: 'appName' },
+								{ className: 'title appName' },
 								'Let\'s Listen'
 							)
 						)
@@ -37309,7 +37379,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".page {\n\t/*border: 4px solid blue;*/\n\theight: auto;\n\twidth: 1200px;\n\tmargin: 10px auto;\n}\n\n.col {\n\t/*border: 2px solid red;*/\n\tdisplay: inline-block;\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 800px;\n\twidth: 300px;\n\tmargin: 10px;\n\tpadding: 20px;\n\tposition: relative;\n\toverflow: auto;\n\tvertical-align: top;\n\n\topacity: 0.95;\n\ttransition: all 0.5s ease-in;\n}\n\n.col:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.row {\n\twidth: 100%;\n\tposition: relative;\n}\n\n.titleBar {\n\t/*border: 2px solid green;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\twidth: 1020px;\n\tmargin-left: 10px;\n\tpadding: 10px 20px;\n}\n\n.roomNumber, .appName {\n\tcolor: #cd201f;\n\tfont-size: 40px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.roomNumber:hover, .appName:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.appName {\n\tfloat: right;\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.page {\n\t\twidth: 100vw;\n\t}\n\n\t.col {\n\t\theight: auto;\n\t}\n}", ""]);
+	exports.push([module.id, ".page {\n\t/*border: 4px solid blue;*/\n\theight: auto;\n\twidth: 1200px;\n\tmargin: 10px auto;\n}\n\n.col {\n\t/*border: 2px solid red;*/\n\tdisplay: inline-block;\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 800px;\n\twidth: 300px;\n\tmargin: 10px;\n\tpadding: 20px;\n\tposition: relative;\n\toverflow: auto;\n\tvertical-align: top;\n\n\topacity: 0.95;\n\ttransition: all 0.5s ease-in;\n}\n\n.col:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.row {\n\t/*border: 2px solid green;*/\n\twidth: 100%;\n\tposition: relative;\n}\n\n.titleBar {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\twidth: 1020px;\n\tmargin-left: 10px;\n\tpadding: 10px 20px;\n}\n\n.title {\n\tcolor: #cd201f;\n\tfont-size: 40px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.roomNumber:hover, .appName:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.appName {\n\tfloat: right;\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.page {\n\t\tmargin: 20px auto;\n\t\twidth: 100vw;\n\t}\n\n\t.row {\n\t\tmargin: 0 auto;\n\t\twidth: 95vw;\n\t}\n\n\t.col {\n\t\theight: auto;\n\t}\n\n\t.titleBar {\n\t\twidth: 90vw;\n\t\tmargin: 0;\n\t\tpadding: 10px 20px;\n\t}\n\n\t.roomNumber {\n\t\tfloat: right;\n\t\tmargin-left: 20px;\n\t}\n\n\t.menu {\n\t\tbackground-color: white;\n\t\tborder: none;\n\t\tborder-radius: 6px;\n\t\twidth: 200px;\n\t\tmargin-right: 10px;\n\t}\n}", ""]);
 	
 	// exports
 
