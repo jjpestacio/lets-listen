@@ -58,7 +58,6 @@ export default class JoinRoom extends Component {
 	}
 
 	joinRoom(roomId) {
-		console.log('here')
 		this.socket.emit('check room', roomId);
 
 		this.socket.once('room not authorized', roomId => {

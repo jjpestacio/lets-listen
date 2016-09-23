@@ -65,6 +65,7 @@ export default class Room extends Component {
 
 		// Mobile version
 		if (320 < screen.width && screen.width < 480) {
+			console.log('mobile')
 			return (
 				<div className='page'>
 					<div className='row'>
