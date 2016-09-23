@@ -54,7 +54,7 @@ export default class RequestForm extends Component {
 		const { searchResults } = this.state;
 
 		return (
-			<div>
+			<div className='requestForm'>
 				<BasicForm 
 					buttonText={'Search'}
 					placeholder={'Search YouTube'}

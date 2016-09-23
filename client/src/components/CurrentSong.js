@@ -14,7 +14,13 @@ export default class CurrentSong extends Component {
 		const { song, onClick } = this.props;
 
 		if (!song)
-			return null;
+		return (
+			<div>
+				<div className="title header">
+					Current Song
+				</div>
+			</div>
+		);
 
 		const { channelTitle, title, thumbnails } = song.snippet;
 		const artworkUrl = thumbnails.medium.url;

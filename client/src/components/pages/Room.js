@@ -28,8 +28,21 @@ export default class Room extends Component {
 
 		this.socket = this.props.socket;
 
+		this.getPlayer = this.getPlayer.bind(this);
 		this.getView = this.getView.bind(this);
 		this.view = this.view.bind(this);
+	}
+
+	getPlayer() {
+		const { currentSong } = this.props;
+
+		return (
+			<div className="row">
+				<div className="col">
+					<Player socket={this.socket} song={currentSong} />
+				</div>
+			</div>
+		);
 	}
 
 	getView() {
@@ -77,12 +90,13 @@ export default class Room extends Component {
 							</span>
 						</div>
 					</div>
+					{ client.userId === DJ
+						? this.getPlayer()
+						: null
+					}
 					<div className='row'>
-						<div className='col'>
-							{ client.userId === DJ
-								? <Player socket={this.socket} currentSong={currentSong} />
-								: null
-							}
+						<div className='col view'>
+							<CurrentSong song={currentSong} />
 						</div>
 					</div>
 					<div className='row'>
@@ -92,7 +106,6 @@ export default class Room extends Component {
 					</div>
 					<div className='row'>
 						<div className='col view'>
-							<CurrentSong song={currentSong} />
 							{ this.getView() }
 						</div>
 					</div>

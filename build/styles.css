@@ -27,12 +27,12 @@ button:hover {
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	body {
-		font-size: 30px;
+		font-size: 40px;
 	}
 
 	button {
 		border-radius: 6px;
-		font-size: 28px;
+		font-size: 36px;
 		padding: 8px 12px;
 	}
 }

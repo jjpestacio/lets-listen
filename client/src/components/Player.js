@@ -24,6 +24,8 @@ export default class Player extends Component {
 	componentWillReceiveProps(newProps) {
 		const { song } = this.props;
 
+		console.log(newProps.song)
+
 		if (!newProps.song)
 			return;
 

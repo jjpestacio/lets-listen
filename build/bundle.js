@@ -37200,12 +37200,29 @@
 	
 			_this.socket = _this.props.socket;
 	
+			_this.getPlayer = _this.getPlayer.bind(_this);
 			_this.getView = _this.getView.bind(_this);
 			_this.view = _this.view.bind(_this);
 			return _this;
 		}
 	
 		_createClass(Room, [{
+			key: 'getPlayer',
+			value: function getPlayer() {
+				var currentSong = this.props.currentSong;
+	
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'row' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'col' },
+						_react2.default.createElement(_Player2.default, { socket: this.socket, song: currentSong })
+					)
+				);
+			}
+		}, {
 			key: 'getView',
 			value: function getView() {
 				var currentView = this.state.currentView;
@@ -37271,13 +37288,14 @@
 							)
 						)
 					),
+					client.userId === DJ ? this.getPlayer() : null,
 					_react2.default.createElement(
 						'div',
 						{ className: 'row' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col' },
-							client.userId === DJ ? _react2.default.createElement(_Player2.default, { socket: this.socket, currentSong: currentSong }) : null
+							{ className: 'col view' },
+							_react2.default.createElement(_CurrentSong2.default, { song: currentSong })
 						)
 					),
 					_react2.default.createElement(
@@ -37295,7 +37313,6 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'col view' },
-							_react2.default.createElement(_CurrentSong2.default, { song: currentSong }),
 							this.getView()
 						)
 					)
@@ -37396,7 +37413,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".title {\n\tcolor: #cd201f;\n\tfont-size: 40px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.header {\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}", ""]);
+	exports.push([module.id, ".title {\n\tcolor: #cd201f;\n\tfont-size: 50px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.header {\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}", ""]);
 	
 	// exports
 
@@ -37502,6 +37519,8 @@
 			value: function componentWillReceiveProps(newProps) {
 				var song = this.props.song;
 	
+	
+				console.log(newProps.song);
 	
 				if (!newProps.song) return;else if (!song) this.player.loadVideoById(newProps.song.id.videoId);else if (newProps.song.id.videoId !== song.id.videoId) this.player.loadVideoById(newProps.song.id.videoId);
 			}
@@ -47473,7 +47492,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".controller {\n\tmargin: 8px 0;\n}\n\nbutton.control {\n\tfont-size: 14px;\n\tmargin-right: 5px;\n\tpadding: 4px 8px;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.control:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\tbutton.control {\n\t\tborder-radius: 6px;\n\t\tfont-size: 28px;\n\t\tpadding: 8px 12px;\n\t}\n}", ""]);
+	exports.push([module.id, ".controller {\n\tmargin: 8px 0;\n}\n\nbutton.control {\n\tfont-size: 14px;\n\tmargin-right: 5px;\n\tpadding: 4px 8px;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.control:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\tbutton.control {\n\t\tborder-radius: 6px;\n\t\tfont-size: 36px;\n\t\tpadding: 8px 12px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -47736,7 +47755,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".song {\n\t/*border: 1px solid #525f59;*/\n\tbackground-color: #fbfbfb;\n\tborder-radius: 2px;\n\tmin-height: 90px;\n\theight: auto;\n\twidth: 99%;\n\tmargin-top: 10px;\n\tpadding: 5px;\n\tposition: relative;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.song:hover {\n\t/*cursor: pointer;*/\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.currentSong {\n\topacity: 9;\n}\n\n.artwork {\n\t/*border: 4px solid black;*/\n\tborder-radius: 2px;\n\tdisplay: inline-block;\n\theight: 80px;\n\twidth: 80px;\n\tpadding: 5px;\n\tvertical-align: center\n}\n\n.songInfo {\n\tborder: 4px solid yellow;\n\tdisplay: inline-block;\n\theight: auto;\n\twidth: 64%;\n\tpadding: 5px;\n\tword-wrap: break-word;\n\tvertical-align: top;\n}\n\n.channelTitle {\n\tdisplay: block;\n\tcolor: #afa8c2;\n\tfont-size: 12px;\n}\n\n.songTitle {\n\tdisplay: block;\n\tcolor: #525f59;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.song {\n\t\tborder-radius: 4px;\n\t\tmargin-top: 20px;\n\t\twidth: auto;\n\t}\n\n\t.artwork {\n\t\tborder-radius: 4px;\n\t\theight: 140px;\n\t\twidth: 140px;\n\t}\n\n\t.channelTitle {\n\t\tfont-size: 26px;\n\t}\n}", ""]);
+	exports.push([module.id, ".song {\n\t/*border: 1px solid #525f59;*/\n\tbackground-color: #fbfbfb;\n\tborder-radius: 2px;\n\tmin-height: 90px;\n\theight: auto;\n\twidth: 98%;\n\tmargin-top: 10px;\n\tpadding: 5px;\n\tposition: relative;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.song:hover {\n\t/*cursor: pointer;*/\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.currentSong {\n\topacity: 9;\n}\n\n.artwork {\n\t/*border: 4px solid black;*/\n\tborder-radius: 2px;\n\tdisplay: inline-block;\n\theight: 80px;\n\twidth: 80px;\n\tpadding: 5px;\n\tvertical-align: center\n}\n\n.songInfo {\n\t/*border: 4px solid yellow;*/\n\tdisplay: inline-block;\n\theight: auto;\n\twidth: 64%;\n\tpadding: 0 5px;\n\tword-wrap: break-word;\n\tvertical-align: top;\n}\n\n.channelTitle {\n\tdisplay: block;\n\tcolor: #afa8c2;\n\tfont-size: 12px;\n}\n\n.songTitle {\n\tdisplay: block;\n\tcolor: #525f59;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.song {\n\t\tborder-radius: 4px;\n\t\twidth: 95%;\n\t\tmargin-top: 20px;\n\t\tpadding: 20px;\n\t}\n\n\t.artwork {\n\t\tborder-radius: 4px;\n\t\theight: 180px;\n\t\twidth: 180px;\n\t\tmargin-right: 10px;\n\t}\n\n\t.songInfo {\n\t\twidth: 73%;\n\t}\n\n\t.channelTitle {\n\t\tfont-size: 32px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -47845,7 +47864,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'requestForm' },
 					_react2.default.createElement(_BasicForm2.default, {
 						buttonText: 'Search',
 						placeholder: 'Search YouTube',
@@ -49239,7 +49258,7 @@
 	
 	
 	// module
-	exports.push([module.id, "button.request {\n\tborder-radius: 0px 4px 4px 0px;\n\tvertical-align: top;\n\n\tcursor: pointer;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.request:hover {\n\tcursor: normal;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.request {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0px 0px 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tmargin-bottom: 10px;\n\tpadding: 4px 8px;\n}\n\ninput.request:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\tbutton.request {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.request {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 26px;\n\t\tpadding: 8px 16px;\n\t}\n}", ""]);
+	exports.push([module.id, "button.request {\n\tborder-radius: 0px 4px 4px 0px;\n\tvertical-align: top;\n\n\tcursor: pointer;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.request:hover {\n\tcursor: normal;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.request {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0px 0px 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tmargin-bottom: 10px;\n\tpadding: 4px 8px;\n}\n\ninput.request:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.requestForm {\n\t\tfloat: right;\n\t}\n\n\tbutton.request {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.request {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 34px;\n\t\tpadding: 8px 16px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -49294,7 +49313,15 @@
 				var onClick = _props.onClick;
 	
 	
-				if (!song) return null;
+				if (!song) return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'div',
+						{ className: 'title header' },
+						'Current Song'
+					)
+				);
 	
 				var _song$snippet = song.snippet;
 				var channelTitle = _song$snippet.channelTitle;
