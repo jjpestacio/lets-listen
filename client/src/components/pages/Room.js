@@ -64,7 +64,7 @@ export default class Room extends Component {
 		const { currentView } = this.state;
 
 		// Mobile version
-		// if (320 < screen.width && screen.width < 480) {
+		if (320 < screen.width && screen.width < 480) {
 			return (
 				<div className='page'>
 					<div className='row'>
@@ -111,7 +111,7 @@ export default class Room extends Component {
 					</div>
 				</div>
 			);
-		// }
+		}
 		
 		// Desktop / Laptop version
 		return (
