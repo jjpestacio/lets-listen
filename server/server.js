@@ -100,11 +100,11 @@ io.on('connection', socket => {
 				store.dispatch(setDJ(store.getState().users[0].userId));
 
 			// Last user, remove room after 5 minutes idle time
-			if (store.getState().users.length === 0)
-				setTimeout(() => {
-					if (store.getState().users.length === 0)
-						rooms[roomId] = null;
-				}, 30000);
+			// if (store.getState().users.length === 0)
+			// 	setTimeout(() => {
+			// 		if (store.getState().users.length === 0)
+			// 			rooms[roomId] = null;
+			// 	}, 30000);
 		}
 	});
 });

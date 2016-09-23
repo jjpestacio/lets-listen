@@ -1,6 +1,7 @@
 import React, { Component,PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import './styles/Title.css'
 import './styles/UserList.css'
 
 @connect (
@@ -36,6 +37,9 @@ export default class UserList extends Component {
 
 		return (
 			<div>
+				<div className="title header">
+					Users
+				</div>
 				{ users.map(user =>
 					// <User user={user} />
 					<div key={user.username} className={'user' + this.isDJ(user)}>

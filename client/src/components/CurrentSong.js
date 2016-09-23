@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import './styles/Title.css'
 import './styles/Song.css'
 import { NO_IMAGE } from '../constants'
 
@@ -19,12 +20,17 @@ export default class CurrentSong extends Component {
 		const artworkUrl = thumbnails.medium.url;
 
 		return (
-			<div className='song currentSong' onClick={onClick}>
-				<img className='artwork'
-					src={artworkUrl ? artworkUrl : NO_IMAGE } />
-				<div className='songInfo'>
-					<span className="channelTitle">{ channelTitle }</span>
-					<span className="songTitle">{ title }</span>
+			<div>
+				<div className="title header">
+					Current Song
+				</div>
+				<div className='song currentSong' onClick={onClick}>
+					<img className='artwork'
+						src={artworkUrl ? artworkUrl : NO_IMAGE } />
+					<div className='songInfo'>
+						<span className="channelTitle">{ channelTitle }</span>
+						<span className="songTitle">{ title }</span>
+					</div>
 				</div>
 			</div>
 		);

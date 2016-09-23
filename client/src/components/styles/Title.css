@@ -1,0 +1,13 @@
+.title {
+	color: #cd201f;
+	font-size: 40px;
+	font-weight: bold;
+
+	opacity: 0.75;
+	transition: all 0.5s ease-out;
+}
+
+.header {
+	font-family: 'Lobster', cursive;
+	font-weight: normal;
+}

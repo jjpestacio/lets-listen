@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import './styles/Title.css'
+
 import SongList from './SongList'
 
 @connect(
@@ -19,6 +21,9 @@ export default class Queue extends Component {
 	
 		return (
 			<div>
+				<div className="title header">
+					Queue
+				</div>
 				<SongList songs={queue.slice(1, queue.length)} />
 			</div>
 		)

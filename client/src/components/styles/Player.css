@@ -15,3 +15,11 @@ button.control:hover {
 	opacity: 1;
 	transition: all 0.3s ease-in;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	button.control {
+		border-radius: 6px;
+		font-size: 28px;
+		padding: 8px 12px;
+	}
+}
