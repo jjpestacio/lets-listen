@@ -33,6 +33,10 @@ export default class Room extends Component {
 		this.view = this.view.bind(this);
 	}
 
+	componentWillUnmount() {
+		this.socket.emit('logout');
+	}
+
 	getPlayer() {
 		const { currentSong } = this.props;
 
@@ -59,9 +63,9 @@ export default class Room extends Component {
 	}
 
 	render() {
-		const { roomId } = this.props.params;
 		const { client, currentSong, DJ } = this.props;
 		const { currentView } = this.state;
+		const roomId = window.sessionStorage.getItem('roomId')
 
 		// Mobile version
 		if (320 < screen.width && screen.width < 480) {

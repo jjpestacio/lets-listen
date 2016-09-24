@@ -36830,11 +36830,12 @@
 	
 				this.socket.emit('create room id', roomId);
 	
-				this.socket.once('room id not available', function () {
-					_this3.createRoom(accessToken);
-				});
+				this.socket.once('room id auth', function (auth) {
+					if (!auth) {
+						_this3.createRoom(accessToken);
+						return;
+					}
 	
-				this.socket.once('room id available', function (roomId) {
 					_this3.socket.emit('create room', { accessToken: accessToken, roomId: roomId });
 					_this3.joinRoom(roomId);
 				});
@@ -36846,24 +36847,23 @@
 	
 				this.socket.emit('check room', roomId);
 	
-				this.socket.once('room not authorized', function (roomId) {
-					alert('Room does not exist.');
-					return;
-				});
+				this.socket.once('room auth', function (auth1) {
+					if (!auth1) {
+						alert('Room does not exist');
+						return;
+					}
 	
-				this.socket.once('room authorized', function (roomId) {
 					_this4.socket.emit('check username', {
 						roomId: roomId,
 						username: _this4.state.username
 					});
 	
-					_this4.socket.once('username not authorized', function (username) {
-						alert('That username is already taken.');
-						return;
-					});
+					_this4.socket.once('username auth', function (auth2) {
+						if (!auth2) {
+							alert('That username is already taken.');
+							return;
+						}
 	
-					_this4.socket.once('username authorized', function (username) {
-						_this4.setState({ username: username });
 						_this4.setRoom(roomId);
 						_this4.signIn();
 					});
@@ -37000,7 +37000,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 250px;\n\t\twidth: 620px;\n\t\tpadding: 30px;\n\t}\n\n\t.loginForms {\n\t\twidth: 600px;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 26px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n}", ""]);
+	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 30vw;\n\t\twidth: 85vw;\n\t\tpadding: 30px;\n\t}\n\n\t.loginForms {\n\t\twidth: 75vw;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 34px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n\tinput.login.join {\n\t\twidth: 180px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -37206,6 +37206,11 @@
 		}
 	
 		_createClass(Room, [{
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.socket.emit('logout');
+			}
+		}, {
 			key: 'getPlayer',
 			value: function getPlayer() {
 				var currentSong = this.props.currentSong;
@@ -37237,15 +37242,15 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var roomId = this.props.params.roomId;
 				var _props = this.props;
 				var client = _props.client;
 				var currentSong = _props.currentSong;
 				var DJ = _props.DJ;
 				var currentView = this.state.currentView;
 	
-				// Mobile version
+				var roomId = window.sessionStorage.getItem('roomId');
 	
+				// Mobile version
 				if (320 < screen.width && screen.width < 480) {
 					console.log('mobile');
 					return _react2.default.createElement(
@@ -37534,8 +37539,8 @@
 				var videoId = song ? song.id.videoId : null;
 	
 				this.player = (0, _youtubePlayer2.default)('iframe', {
-					height: '100%',
-					width: '100%',
+					height: '97%',
+					width: '97%',
 					videoId: videoId,
 					playerVars: {
 						autoplay: 1,

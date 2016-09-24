@@ -73,13 +73,13 @@ input.login:focus {
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	.loginBox {
 		border-radius: 10px;
-		height: 250px;
-		width: 620px;
+		height: 30vw;
+		width: 85vw;
 		padding: 30px;
 	}
 
 	.loginForms {
-		width: 600px;
+		width: 75vw;
 	}
 
 	.loginForm {
@@ -92,8 +92,11 @@ input.login:focus {
 
 	input.login {
 		border-radius: 6px 0 0 6px;
-		font-size: 26px;
+		font-size: 34px;
 		padding: 8px 16px;
 	}	
 
+	input.login.join {
+		width: 180px;
+	}
 }

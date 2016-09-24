@@ -41,8 +41,8 @@ export default class Player extends Component {
 		const videoId = song ? song.id.videoId : null;
 
 		this.player = YouTubePlayer('iframe', {
-			height: '100%',
-			width: '100%',
+			height: '97%',
+			width: '97%',
 			videoId,
 			playerVars: {
 				autoplay: 1,
