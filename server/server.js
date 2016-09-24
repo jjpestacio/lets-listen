@@ -36,7 +36,7 @@ const logout = ( roomId, userId ) => {
 		setTimeout(() => {
 			if (store.getState().users.length === 0)
 				rooms[roomId] = null;
-		}, 30000);
+		}, 300000);
 }
 
 io.on('connection', socket => {
