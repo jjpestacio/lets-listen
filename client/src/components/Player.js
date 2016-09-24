@@ -50,8 +50,6 @@ export default class Player extends Component {
 			}
 		});
 
-		console.log(this.player.getVideoData())
-
 		this.player.on('stateChange', state => {
 			const { data } = state;
 
@@ -62,6 +60,10 @@ export default class Player extends Component {
 			else if (data === PAUSED)
 				this.setState({ isPlaying: false });
 		});
+
+		// To autoplay on mobile on page refresh
+		if (videoId)
+			this.player.playVideo();
 	}
 
 	componentWillUnmount() {

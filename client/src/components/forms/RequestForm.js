@@ -10,6 +10,7 @@ import SongList from '../SongList'
 @connect (
 	state => ({
 		accessToken: state.accessToken,
+		client: state.client
 	})
 )
 
@@ -27,7 +28,9 @@ export default class RequestForm extends Component {
 	}
 
 	chooseSong(song) {
-		this.socket.emit('add song', song);
+		const { client } = this.props;
+
+		this.socket.emit('add song', { ...song, suggestedBy: client });
 		this.setState({ searchResults: [] });
 	}
 

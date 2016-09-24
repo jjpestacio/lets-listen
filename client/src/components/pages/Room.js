@@ -74,7 +74,7 @@ export default class Room extends Component {
 				<div className='page'>
 					<div className='row'>
 						<div className='titleBar'>
-							<select className='title menu' onChange={this.view}>
+							<select className='title main menu' onChange={this.view}>
 								<option key={currentView} value={currentView}>
 									{ currentView }
 								</option>
@@ -87,10 +87,10 @@ export default class Room extends Component {
 									)
 								}
 							</select>
-							<span className='title roomNumber'>
+							<span className='title main roomNumber'>
 								Room: { roomId }
 							</span>
-							<span className='title appName'>
+							<span className='title main appName'>
 								Let's Listen
 							</span>
 						</div>

@@ -32,11 +32,11 @@ const logout = ( roomId, userId ) => {
 		store.dispatch(setDJ(store.getState().users[0].userId));
 
 	// Last user, remove room after 5 minutes idle time
-	if (store.getState().users.length === 0)
-		setTimeout(() => {
-			if (store.getState().users.length === 0)
-				rooms[roomId] = null;
-		}, 300000);
+	// if (store.getState().users.length === 0)
+	// 	setTimeout(() => {
+	// 		if (store.getState().users.length === 0)
+	// 			rooms[roomId] = null;
+	// 	}, 300000);
 }
 
 io.on('connection', socket => {

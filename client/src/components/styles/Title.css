@@ -7,6 +7,10 @@
 	transition: all 0.5s ease-out;
 }
 
+.title.main {
+	font-size: 60px;
+}
+
 .header {
 	font-family: 'Lobster', cursive;
 	font-weight: normal;

@@ -37000,7 +37000,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 30vw;\n\t\twidth: 85vw;\n\t\tpadding: 30px;\n\t}\n\n\t.loginForms {\n\t\twidth: 75vw;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 34px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n\tinput.login.join {\n\t\twidth: 180px;\n\t}\n}", ""]);
+	exports.push([module.id, ".loginBox {\n\t/*border: 2px solid red;*/\n\tbackground-color: white;\n\tborder-radius: 6px;\n\theight: 105px;\n\twidth: 400px;\n\tmargin: auto;\n\tpadding: 20px;\n\tposition: absolute;\n\ttop: 0; bottom: 0; left: 0; right: 0;\n\toverflow: auto;\n\ttext-align: center;\n\n\topacity: 0.9;\n\ttransition: all 0.5s ease-out;\n}\n\n.loginBox:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.loginGoogle {\n\tcolor: #525f59;\n}\n\n.loginForms {\n\t/*border: 2px red solid;*/\n\twidth: 280px;\n\tmargin: 0 auto;\n\ttext-align: right;\n}\n\n.loginForm {\n\tmargin-top: 10px;\n}\n\nbutton.login {\n\tborder-radius: 0 4px 4px 0;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\nbutton.login:hover {\n\tcursor: pointer;\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\ninput.login {\n\tbackground-color: #e5e5e5;\n\tborder: none;\n\tborder-radius: 4px 0 0 4px;\n\tbox-shadow: none;\n\tcolor: #a2a2a2;\n\tfont-size: 13px;\n\toutline: none;\n\tpadding: 4px 8px;\n\tvertical-align: top;\n}\n\ninput.login.join {\n\twidth: 70px;\n}\n\ninput.login:focus {\n\tbox-shadow: none;\n\toutline: none;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.loginBox {\n\t\tborder-radius: 10px;\n\t\theight: 30vw;\n\t\twidth: 85vw;\n\t\tpadding: 30px;\n\t}\n\n\t.loginForms {\n\t\twidth: 80vw;\n\t}\n\n\t.loginForm {\n\t\tmargin-top: 20px\n\t}\n\n\tbutton.login {\n\t\tborder-radius: 0 6px 6px 0;\n\t}\n\n\tinput.login {\n\t\tborder-radius: 6px 0 0 6px;\n\t\tfont-size: 34px;\n\t\tpadding: 8px 16px;\n\t}\t\n\n\tinput.login.join {\n\t\twidth: 180px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -37264,7 +37264,7 @@
 								{ className: 'titleBar' },
 								_react2.default.createElement(
 									'select',
-									{ className: 'title menu', onChange: this.view },
+									{ className: 'title main menu', onChange: this.view },
 									_react2.default.createElement(
 										'option',
 										{ key: currentView, value: currentView },
@@ -37282,13 +37282,13 @@
 								),
 								_react2.default.createElement(
 									'span',
-									{ className: 'title roomNumber' },
+									{ className: 'title main roomNumber' },
 									'Room: ',
 									roomId
 								),
 								_react2.default.createElement(
 									'span',
-									{ className: 'title appName' },
+									{ className: 'title main appName' },
 									'Let\'s Listen'
 								)
 							)
@@ -37418,7 +37418,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".title {\n\tcolor: #cd201f;\n\tfont-size: 50px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.header {\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}", ""]);
+	exports.push([module.id, ".title {\n\tcolor: #cd201f;\n\tfont-size: 50px;\n\tfont-weight: bold;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.title.main {\n\tfont-size: 60px;\n}\n\n.header {\n\tfont-family: 'Lobster', cursive;\n\tfont-weight: normal;\n}", ""]);
 	
 	// exports
 
@@ -37548,14 +37548,15 @@
 					}
 				});
 	
-				console.log(this.player.getVideoData());
-	
 				this.player.on('stateChange', function (state) {
 					var data = state.data;
 	
 	
 					if (data === ENDED) _this2.nextSong();else if (data === PLAYING) _this2.setState({ isPlaying: true });else if (data === PAUSED) _this2.setState({ isPlaying: false });
 				});
+	
+				// To autoplay on mobile on page refresh
+				if (videoId) this.player.playVideo();
 			}
 		}, {
 			key: 'componentWillUnmount',
@@ -47697,6 +47698,24 @@
 	
 				var artworkUrl = thumbnails.medium.url;
 	
+				// if (song.suggestedBy)
+				// return (
+				// 	<div className='song' onClick={onClick}>
+				// 		<div className='row'>
+				// 			<span className="suggestedByUser">{ song.suggestedBy.username }</span>
+				// 			<span className="suggestedBy">Suggested By: </span>
+				// 		</div>
+				// 		<div className='row'>
+				// 			<img className='artwork'
+				// 				src={artworkUrl ? artworkUrl : NO_IMAGE } />
+				// 			<div className='songInfo'>
+				// 				<span className='channelTitle'>{ channelTitle }</span>
+				// 				<span className='songTitle'>{ title }</span>
+				// 			</div>
+				// 		</div>
+				// 	</div>
+				// );
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'song', onClick: onClick },
@@ -47760,7 +47779,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".song {\n\t/*border: 1px solid #525f59;*/\n\tbackground-color: #fbfbfb;\n\tborder-radius: 2px;\n\tmin-height: 90px;\n\theight: auto;\n\twidth: 98%;\n\tmargin-top: 10px;\n\tpadding: 5px;\n\tposition: relative;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.song:hover {\n\t/*cursor: pointer;*/\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.currentSong {\n\topacity: 9;\n}\n\n.artwork {\n\t/*border: 4px solid black;*/\n\tborder-radius: 2px;\n\tdisplay: inline-block;\n\theight: 80px;\n\twidth: 80px;\n\tpadding: 5px;\n\tvertical-align: center\n}\n\n.songInfo {\n\t/*border: 4px solid yellow;*/\n\tdisplay: inline-block;\n\theight: auto;\n\twidth: 64%;\n\tpadding: 0 5px;\n\tword-wrap: break-word;\n\tvertical-align: top;\n}\n\n.channelTitle {\n\tdisplay: block;\n\tcolor: #afa8c2;\n\tfont-size: 12px;\n}\n\n.songTitle {\n\tdisplay: block;\n\tcolor: #525f59;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.song {\n\t\tborder-radius: 4px;\n\t\twidth: 95%;\n\t\tmargin-top: 20px;\n\t\tpadding: 20px;\n\t}\n\n\t.artwork {\n\t\tborder-radius: 4px;\n\t\theight: 180px;\n\t\twidth: 180px;\n\t\tmargin-right: 10px;\n\t}\n\n\t.songInfo {\n\t\twidth: 73%;\n\t}\n\n\t.channelTitle {\n\t\tfont-size: 32px;\n\t}\n}", ""]);
+	exports.push([module.id, ".song {\n\t/*border: 1px solid #525f59;*/\n\tbackground-color: #fbfbfb;\n\tborder-radius: 2px;\n\tmin-height: 90px;\n\theight: auto;\n\twidth: 98%;\n\tmargin-top: 10px;\n\tpadding: 5px;\n\tposition: relative;\n\n\tcursor: normal;\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.song:hover {\n\t/*cursor: pointer;*/\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.currentSong {\n\topacity: 9;\n}\n\n.suggestedBy, .suggestedByUser {\n\tfloat: right;\n}\n\n.artwork {\n\t/*border: 4px solid black;*/\n\tborder-radius: 2px;\n\tdisplay: inline-block;\n\theight: 80px;\n\twidth: 80px;\n\tpadding: 5px;\n\tvertical-align: center\n}\n\n.songInfo {\n\t/*border: 4px solid yellow;*/\n\tdisplay: inline-block;\n\theight: auto;\n\twidth: 57%;\n\tpadding: 0 5px;\n\tword-wrap: break-word;\n\tvertical-align: top;\n}\n\n.channelTitle {\n\tdisplay: block;\n\tcolor: #afa8c2;\n\tfont-size: 12px;\n}\n\n.songTitle {\n\tdisplay: block;\n\tcolor: #525f59;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.song {\n\t\tborder-radius: 4px;\n\t\twidth: 95%;\n\t\tmargin-top: 20px;\n\t\tpadding: 20px;\n\t}\n\n\t.artwork {\n\t\tborder-radius: 4px;\n\t\theight: 180px;\n\t\twidth: 180px;\n\t\tmargin-right: 10px;\n\t}\n\n\t.songInfo {\n\t\twidth: 73%;\n\t}\n\n\t.channelTitle {\n\t\tfont-size: 32px;\n\t}\n}", ""]);
 	
 	// exports
 
@@ -47775,6 +47794,8 @@
 		value: true
 	});
 	exports.default = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -47810,7 +47831,8 @@
 	
 	var RequestForm = (_dec = (0, _reactRedux.connect)(function (state) {
 		return {
-			accessToken: state.accessToken
+			accessToken: state.accessToken,
+			client: state.client
 		};
 	}), _dec(_class = function (_Component) {
 		_inherits(RequestForm, _Component);
@@ -47834,7 +47856,10 @@
 		_createClass(RequestForm, [{
 			key: 'chooseSong',
 			value: function chooseSong(song) {
-				this.socket.emit('add song', song);
+				var client = this.props.client;
+	
+	
+				this.socket.emit('add song', _extends({}, song, { suggestedBy: client }));
 				this.setState({ searchResults: [] });
 			}
 		}, {
@@ -49523,7 +49548,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".user {\n/*\tborder: 2px red solid;*/\n\tcolor: #525f59;\n\tfont-size: 24px;\n\tmargin-bottom: 5px;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.user:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.DJ {\n\tcolor: #cd201f;\n\tfont-weight: bold;\n}\n\nbutton.setDJ {\n\tmargin-right: 5px;\n}\n\n", ""]);
+	exports.push([module.id, ".user {\n/*\tborder: 2px red solid;*/\n\tcolor: #525f59;\n\tfont-size: 24px;\n\tmargin-bottom: 5px;\n\n\topacity: 0.75;\n\ttransition: all 0.5s ease-out;\n}\n\n.user:hover {\n\topacity: 1;\n\ttransition: all 0.3s ease-in;\n}\n\n.DJ {\n\tcolor: #cd201f;\n\tfont-weight: bold;\n}\n\nbutton.setDJ {\n\tmargin-right: 5px;\n}\n\n@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {\n\t.user {\n\t\tfont-size: 40px;\n\t\tmargin-top: 10px;\n\t}\n}\n\n", ""]);
 	
 	// exports
 
