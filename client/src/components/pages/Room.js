@@ -68,55 +68,53 @@ export default class Room extends Component {
 		const roomId = window.sessionStorage.getItem('roomId')
 
 		// Mobile version
-		if (320 < screen.width && screen.width < 480) {
-			console.log('mobile')
-			return (
-				<div className='page'>
-					<div className='row'>
-						<div className='titleBar'>
-							<select className='title main menu' onChange={this.view}>
-								<option key={currentView} value={currentView}>
-									{ currentView }
-								</option>
-								{ ['Queue', 'Users']
-									.filter(view => view !== currentView)
-									.map(view => 
-										<option key={view} value={view}>
-											{ view }
-										</option>
-									)
-								}
-							</select>
-							<span className='title main roomNumber'>
-								Room: { roomId }
-							</span>
-							<span className='title main appName'>
-								Let's Listen
-							</span>
-						</div>
-					</div>
-					{ client.userId === DJ
-						? this.getPlayer()
-						: null
-					}
-					<div className='row'>
-						<div className='col view'>
-							<CurrentSong song={currentSong} />
-						</div>
-					</div>
-					<div className='row'>
-						<div className='col'>
-							<RequestForm socket={this.socket} />
-						</div>
-					</div>
-					<div className='row'>
-						<div className='col view'>
-							{ this.getView() }
-						</div>
+		if (320 < screen.width && screen.width < 480)
+		return (
+			<div className='page'>
+				<div className='row'>
+					<div className='titleBar'>
+						<select className='title main menu' onChange={this.view}>
+							<option key={currentView} value={currentView}>
+								{ currentView }
+							</option>
+							{ ['Queue', 'Users']
+								.filter(view => view !== currentView)
+								.map(view => 
+									<option key={view} value={view}>
+										{ view }
+									</option>
+								)
+							}
+						</select>
+						<span className='title main roomNumber'>
+							Room: { roomId }
+						</span>
+						<span className='title main appName'>
+							Let's Listen
+						</span>
 					</div>
 				</div>
-			);
-		}
+				{ client.userId === DJ
+					? this.getPlayer()
+					: null
+				}
+				<div className='row'>
+					<div className='col view'>
+						<CurrentSong song={currentSong} />
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col'>
+						<RequestForm socket={this.socket} />
+					</div>
+				</div>
+				<div className='row'>
+					<div className='col view'>
+						{ this.getView() }
+					</div>
+				</div>
+			</div>
+		);
 		
 		// Desktop / Laptop version
 		return (

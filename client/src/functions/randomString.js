@@ -11,5 +11,5 @@ export const randomString = length => {
     while (s.length < length) 
     	s += randomChar();
 
-    return s;	
+    return s.toLowerCase();	
 }

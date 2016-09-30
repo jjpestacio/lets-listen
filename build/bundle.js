@@ -36090,7 +36090,7 @@
 	
 	    while (s.length < length) {
 	        s += randomChar();
-	    }return s;
+	    }return s.toLowerCase();
 	};
 
 /***/ },
@@ -37251,78 +37251,75 @@
 				var roomId = window.sessionStorage.getItem('roomId');
 	
 				// Mobile version
-				if (320 < screen.width && screen.width < 480) {
-					console.log('mobile');
-					return _react2.default.createElement(
+				if (320 < screen.width && screen.width < 480) return _react2.default.createElement(
+					'div',
+					{ className: 'page' },
+					_react2.default.createElement(
 						'div',
-						{ className: 'page' },
+						{ className: 'row' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'row' },
+							{ className: 'titleBar' },
 							_react2.default.createElement(
-								'div',
-								{ className: 'titleBar' },
+								'select',
+								{ className: 'title main menu', onChange: this.view },
 								_react2.default.createElement(
-									'select',
-									{ className: 'title main menu', onChange: this.view },
-									_react2.default.createElement(
+									'option',
+									{ key: currentView, value: currentView },
+									currentView
+								),
+								['Queue', 'Users'].filter(function (view) {
+									return view !== currentView;
+								}).map(function (view) {
+									return _react2.default.createElement(
 										'option',
-										{ key: currentView, value: currentView },
-										currentView
-									),
-									['Queue', 'Users'].filter(function (view) {
-										return view !== currentView;
-									}).map(function (view) {
-										return _react2.default.createElement(
-											'option',
-											{ key: view, value: view },
-											view
-										);
-									})
-								),
-								_react2.default.createElement(
-									'span',
-									{ className: 'title main roomNumber' },
-									'Room: ',
-									roomId
-								),
-								_react2.default.createElement(
-									'span',
-									{ className: 'title main appName' },
-									'Let\'s Listen'
-								)
-							)
-						),
-						client.userId === DJ ? this.getPlayer() : null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
+										{ key: view, value: view },
+										view
+									);
+								})
+							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'col view' },
-								_react2.default.createElement(_CurrentSong2.default, { song: currentSong })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
+								'span',
+								{ className: 'title main roomNumber' },
+								'Room: ',
+								roomId
+							),
 							_react2.default.createElement(
-								'div',
-								{ className: 'col' },
-								_react2.default.createElement(_RequestForm2.default, { socket: this.socket })
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col view' },
-								this.getView()
+								'span',
+								{ className: 'title main appName' },
+								'Let\'s Listen'
 							)
 						)
-					);
-				}
+					),
+					client.userId === DJ ? this.getPlayer() : null,
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col view' },
+							_react2.default.createElement(_CurrentSong2.default, { song: currentSong })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col' },
+							_react2.default.createElement(_RequestForm2.default, { socket: this.socket })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col view' },
+							this.getView()
+						)
+					)
+				);
 	
 				// Desktop / Laptop version
 				return _react2.default.createElement(
